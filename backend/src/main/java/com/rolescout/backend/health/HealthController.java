@@ -1,5 +1,6 @@
 package com.rolescout.backend.health;
 
+import java.time.Instant;
 import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,11 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HealthController {
 
-    @GetMapping("/health")
+    @GetMapping("/api/health")
     public Map<String, String> health() {
-         return Map.of(
+        return Map.of(
             "application", "RoleScout",
-            "status", "ok"
+            "status", "ok",
+            "checkedAt", Instant.now().toString()
         );
     }
 }

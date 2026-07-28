@@ -18,9 +18,11 @@ class HealthControllerTest {
 
     @Test
     void returnsUpStatus() throws Exception {
-        mockMvc.perform(get("/health"))
+        mockMvc.perform(get("/api/health"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith("application/json"))
-                .andExpect(jsonPath("$.status").value("UP"));
+                .andExpect(jsonPath("$.application").value("RoleScout"))
+                .andExpect(jsonPath("$.status").value("ok"))
+                .andExpect(jsonPath("$.checkedAt").isNotEmpty());
     }
 }
